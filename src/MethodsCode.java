@@ -1,6 +1,4 @@
-import java.util.List;
-import java.util.Optional;
-import java.util.Random;
+import java.util.*;
 
 public class MethodsCode {
 
@@ -21,6 +19,21 @@ public class MethodsCode {
      * because:
      */
     //write you code here
+    public int getTotal(String number) {
+        int sum = 0;
+        for (String num : number.split("")) {
+            Integer digit = Integer.valueOf(num);
+            if (digit % 2 == 0) {
+                sum += digit * 2;
+            } else {
+                sum += digit * -1;
+            }
+        }
+
+        return sum == 0 ? -1 : sum;
+
+    }
+
 
     //end
 
@@ -36,7 +49,21 @@ public class MethodsCode {
      * Hint: remove the unnecessary icons and calculate the total
      */
     //write you code here
+    public double bankStatementCalculator (List<String> bankStatements) {
+        double sum = 0;
+        for (String str: bankStatements) {
+            String replace = str.replace("$", "").replace(",", "");
+            double num = Double.valueOf(replace);
+            sum += num;
+        }
+        if (sum == 0) {
+            return -1;
+        }
+        else
+            return sum;
 
+
+    }
     //end
 
 
@@ -53,6 +80,22 @@ public class MethodsCode {
      * ex3: 10 -> (random number between 1 and 10)
      */
     //write you code here
+    public int randomGenerator(int bound) {
+        if (bound < 1) {
+            return -1;
+        }
+        if (bound == 1) {
+            return 1;
+        } else {
+
+        }
+        Random random = new Random();
+        int rand = random.nextInt(bound);
+        return bound;
+    }
+
+
+
 
     //end
 
@@ -85,7 +128,15 @@ public class MethodsCode {
      * return is "-1"
      */
     //write you code here
+    public String getPopulation (List<String> countries, List<String> populations, String randomCountry) {
+        if (countries.contains(randomCountry)) {
+            int index = countries.indexOf(randomCountry);
+            return populations.get(index);
+        }
+        else
+            return "-1";
 
+    }
     //end
 
     /**
@@ -105,7 +156,24 @@ public class MethodsCode {
      * return {"Alice", "Bob", "Ali"}
      */
     // write your code here
+     public List<String> correctListOfNames(List<String> names , String wrongName,String correctName){
+         for (String str: names) {
+             if (str.equals(wrongName)) {
+                 int index = names.indexOf(wrongName);
+                 names.set(index, correctName);
+             }
+         }
 
+
+
+
+         return names;
+     }
     //end
 
+
+
+
+
 }
+
